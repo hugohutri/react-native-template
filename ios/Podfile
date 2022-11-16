@@ -51,6 +51,12 @@ target 'TaitoTemplate' do
       .each do |pod_name, target_installation_result|
       target_installation_result.resource_bundle_targets.each do |resource_bundle_target|
         resource_bundle_target.build_configurations.each do |config|
+# @generated begin m1-fixes - expo prebuild (DO NOT MODIFY) sync-9135b0b710a318f67ec694b55bceddddc9001157
+
+          # Fix building failures on M1
+          config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = ''
+
+# @generated end m1-fixes
           config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
         end
       end
