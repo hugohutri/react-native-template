@@ -32,8 +32,8 @@ export function Stack({
 }: Props) {
   // Handle `Fragments` by flattening children
   const elements = flattenChildren(children).filter((e) => isValidElement(e));
-
-  const lastIndex = Children.count(elements) - 1;
+  const elementCount = Children.count(elements);
+  const lastIndex = elementCount - 1;
 
   return (
     <Wrapper axis={axis} align={align} justify={justify} {...rest}>
