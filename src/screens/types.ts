@@ -1,3 +1,4 @@
+import type { FunctionComponent } from 'react';
 import type { UnionToIntersection } from 'type-fest';
 import type { StackScreenProps } from '@react-navigation/stack';
 import type { NavigatorScreenParams } from '@react-navigation/native';
@@ -26,6 +27,12 @@ type AuthedNavigation = {
     Inputs: undefined;
     Layout: undefined;
     Toast: undefined;
+  }>;
+  MenuListStack: Navigator<{
+    MenuList: Screen<{
+      title: string;
+      target?: FunctionComponent<any>;
+    }>;
   }>;
 };
 
@@ -67,7 +74,7 @@ type Navigator<
 > = {
   type: 'navigator';
   children: Children;
-  params: NavigatorScreenParams<any>; // TODO: fix `any` here
+  params: NavigatorScreenParams<any> | undefined; // TODO: fix `any` here
 };
 
 // eslint-disable-next-line @typescript-eslint/ban-types

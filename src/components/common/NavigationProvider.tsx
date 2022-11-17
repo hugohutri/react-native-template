@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { useColorMode } from '~services/color-mode';

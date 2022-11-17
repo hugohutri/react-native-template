@@ -6,6 +6,8 @@ import { t } from '@lingui/macro';
 import {
   useNavigation,
   createNavigationContainerRef,
+  NavigationState,
+  PartialState,
 } from '@react-navigation/native';
 
 import type { ParamList } from './types';
@@ -19,6 +21,15 @@ export function navigate(name: keyof ParamList, params?: any) {
   if (navigationRef.isReady()) {
     navigationRef.navigate(name, params);
   }
+}
+
+export function getActiveRouteName(
+  state: NavigationState | PartialState<NavigationState>
+): string | undefined {
+  if (state.index === undefined) return undefined;
+  const route = state.routes[state.index];
+  if (!route.state) return route.name;
+  return getActiveRouteName(route.state);
 }
 
 export function useDefaultStackScreenOptions() {

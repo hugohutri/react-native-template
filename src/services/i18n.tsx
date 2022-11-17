@@ -29,9 +29,6 @@ export async function initMessages() {
       : require('../locales/en/messages').messages;
 
   i18n.loadLocaleData({ en: { plurals: en }, fi: { plurals: fi } });
-  // i18n.loadLocaleData('en', { plurals: en });
-  // i18n.loadLocaleData('fi', { plurals: fi });
-
   i18n.load(defaultLocale, defaultMessages);
   i18n.activate(defaultLocale);
   Settings.defaultLocale = defaultLocale;
@@ -52,13 +49,15 @@ export function useI18n() {
   const lingui = useLingui();
   const currentLocale = lingui.i18n.locale as Locale;
 
-  const changeLocale = useCallback(
+  const setLocale = useCallback(
     async (locale: Locale) => {
       try {
         const newMessages = await loadMessages(locale);
+
+        Settings.defaultLocale = locale;
         lingui.i18n.load(locale, newMessages);
         lingui.i18n.activate(locale);
-        Settings.defaultLocale = locale;
+
         await storage.set('@app/locale', locale);
       } catch (error) {
         console.log(`> Failed to load messages for locale: ${locale}`, error);
@@ -68,13 +67,13 @@ export function useI18n() {
   );
 
   const toggleLocale = useCallback(() => {
-    changeLocale(currentLocale === 'fi' ? 'en' : 'fi');
-  }, [currentLocale, changeLocale]);
+    setLocale(currentLocale === 'fi' ? 'en' : 'fi');
+  }, [currentLocale, setLocale]);
 
   return {
     i18n: lingui.i18n,
     locale: currentLocale,
-    changeLocale,
+    setLocale,
     toggleLocale,
   };
 }
