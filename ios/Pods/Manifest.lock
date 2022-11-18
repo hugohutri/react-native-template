@@ -278,7 +278,7 @@ PODS:
     - React-Core
   - react-native-ios-context-menu (1.15.1):
     - React-Core
-  - react-native-menu (0.7.1):
+  - react-native-menu (0.7.2):
     - React
   - react-native-mmkv (2.5.1):
     - MMKV (>= 1.2.13)
@@ -647,7 +647,7 @@ SPEC CHECKSUMS:
   React-logger: fdda34dd285bdb0232e059b19d9606fa0ec3bb9c
   react-native-date-picker: 93e43b3084cea595b4d68b1405d6d99849663bd6
   react-native-ios-context-menu: b170594b4448c0cd10c79e13432216bac99de1ac
-  react-native-menu: 6f04c1f9f306378d52a0c260fb3527ab62aebd0f
+  react-native-menu: 8e172cfcf0e42e92f028e7781eddf84d430cae24
   react-native-mmkv: 69b9c003f10afdd01addf7c6ee784ce42ee2eff3
   react-native-safe-area-context: 99b24a0c5acd0d5dcac2b1a7f18c49ea317be99a
   React-perflogger: e68d3795cf5d247a0379735cbac7309adf2fb931
