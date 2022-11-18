@@ -1,0 +1,6 @@
+module Pods_TaitoTemplate {
+  umbrella header "Pods-TaitoTemplate-umbrella.h"
+
+  export *
+  module * { export * }
+}
